@@ -1,4 +1,3 @@
-// Books for bookstore API
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -27,7 +26,6 @@ let books = [
         genre: "Dystopian Fiction",
         copiesAvailable: 7
     }
-    // Add more books if you'd like!
 ];
 
 /* Create your REST API here with the following endpoints:
@@ -37,10 +35,6 @@ let books = [
     'PUT /api/books/:id': 'Update a book',
     'DELETE /api/books/:id': 'Delete a book'
 */
-
-app.listen(port, () => {
-    console.log("Books API server running at http://localhost:${port}")
-});
 
 app.get('/api/books', (req, res) => {
     res.json(books);
@@ -98,11 +92,10 @@ app.delete('/api/books/:id', (req, res) => {
     res.json({ message: 'Book deleted successfully', book: deletedBook });
 });
 
+module.exports = app;
 
-
-
-
-
-
-
-
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Books API server running at http://localhost:${port}`);
+    });
+}
